@@ -8,16 +8,24 @@
         <span class="iconfont">&#xe632</span>
         输入城市景点游玩主题
       </div>
-      <div class="header-right">
-        城市
-        <span class="iconfont arrow-icon">&#xe64a;</span>
-      </div>
+      <router-link to="/city">
+        <div class="header-right">
+          {{this.city}}
+          <span class="iconfont arrow-icon">&#xe64a;</span>
+        </div>
+      </router-link>
+
     </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    name:"HomeHeader",
+    props:{
+      city:String
+    }
+  }
 </script>
 
 <!--<style lang="stylus" scoped>-->
@@ -48,6 +56,10 @@
     display: flex;
     line-height: .86rem;
     color: #fff;
+  }
+
+  .header-right{
+    color:white
   }
 
   .header-left {

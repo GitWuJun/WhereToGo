@@ -1,6 +1,6 @@
 <template>
 	<div class="icons">
-		<swiper>
+		<swiper :options="swiperOption">
 			<swiper-slide v-for="(page,index) of pages" :key="index">
 
 				<div class="icon" v-for="item of page" :key="item.id">
@@ -20,44 +20,14 @@
 		name:'HomeIcons',
 		data() {
 			return {
-				iconList:[
-				{
-					id:'0002',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-					desc:'水上乐园'
-				},
-				{
-					id:'0003',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'成都必游'
-				},
-				{
-					id:'0004',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png',
-					desc:'成都定制游'
-				},
-				{
-					id:'0005',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'亲子游'
-				},
-				{
-					id:'0006',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'海洋馆'
-				},
-				{
-					id:'0007',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'一日游'
-				},
-				{
-					id:'0008',
-					imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-					desc:'游乐场'
+				// iconList:[],
+				swiperOption:{
+					autoplay:false
 				}
-				],
 			}
+		},
+		props:{
+			iconList:Array
 		},
 		computed:{
 			pages(){
@@ -119,11 +89,4 @@
 					white-space nowrap
 					text-overflow ellipsis
 		
-		
-	
-			
-
-				
-			
-				
 </style>

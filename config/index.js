@@ -5,17 +5,27 @@
 const path = require('path')
 
 module.exports = {
+    // 开发环境
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    // 在开发环境中当请求地址为以‘/api’开头的则将请求路径改成'/static/mock'
+    proxyTable: {
+        '/api':{
+            target:'http://0.0.0.0:8080',
+            pathRewrite:{
+                '^/api':'/static/mock'
+            }
+        }
+    },
 
     // Various Dev Server settings
     host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

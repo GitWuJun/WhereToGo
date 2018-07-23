@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <!-- 当list不为空的时候才创建swiper -->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
       <swiper-slide v-for="item of swiperList" :key="item.id">
         <img class="swiper-img"
@@ -16,32 +17,24 @@
 <script>
   export default {
     name: "HomeSwiper",
+    props:{
+      swiperList:Array
+    },
     data() {
       return {
         swiperOption: {
           pagination:'.swiper-pagination',
-          loop:true
+          loop:true,
+          
         },
-        swiperList:[{
-          id:'0001',
-          imgUrl:'http://img1.qunarzz.com/piao/fusion/1807/b6/23980fda69a67d02.jpg_750x200_8830c8e2.jpg'
-        },
-        {
-
-          id:'0002',
-          imgUrl:'http://img1.qunarzz.com/piao/fusion/1807/c6/44fce1467be17702.jpg_750x200_406f5fc3.jpg'
-        },
-        {
-
-          id:'0003',
-          imgUrl:'http://img1.qunarzz.com/piao/fusion/1807/5e/cfee2e9e2f357202.jpg_750x200_b0308a43.jpg'
-        }
-        
-        
-
-        ]
+      }
+    },
+    computed:{
+      showSwiper(){
+        return this.swiperList.length
       }
     }
+    
   }
 </script>
 
