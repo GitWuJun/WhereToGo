@@ -2,19 +2,24 @@
 	<div>
 		<div class="recommend-title">热销推荐</div>
 		<ul>
-			<li class="item border-bottom" v-for="item of recommendList">
-				<div class="item-img-wrapper">
-					<img class="item-img" :src="item.imgUrl"/>
-				</div>
-				<div class="item-info">
-					<p class="item-title">{{item.title}}</p>
-					<p class="item-desc">{{item.desc}}</p>
-					<button class="item-button">查看详情</button>
-				</div>
-			</li>
+			<li
+			class="item border-bottom"
+			v-for="item of recommendList"
+			:key="item.id"
+			@click="handleClick(item)"
+			>
+			<div class="item-img-wrapper">
+				<img class="item-img" :src="item.imgUrl"/>
+			</div>
+			<div class="item-info">
+				<p class="item-title">{{item.title}}</p>
+				<p class="item-desc">{{item.desc}}</p>
+				<button class="item-button">查看详情</button>
+			</div>
+		</li>
 
-		</ul>
-	</div>
+	</ul>
+</div>
 </template>
 <script >
 	export default{
@@ -25,6 +30,16 @@
 		},
 		props:{
 			recommendList:Array
+		},
+		methods:{
+			handleClick(item){
+				this.$router.push({
+					name:'Detail',
+					params:{
+						item
+					}
+				})
+			}
 		}
 	}
 
