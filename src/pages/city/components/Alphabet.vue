@@ -20,7 +20,9 @@
 		name:'CityAlphabet',
 		data(){
 			return{
-				touchStatus:false
+				touchStatus:false,
+				startY:0,
+				timer:null
 			}
 		},
 		props:{
@@ -38,17 +40,27 @@
 		},
 		methods:{
 			handleLetterClick(e){
+				//兄弟组件间得传值--先传递给父组件，再转发给兄弟组件
+
 				//向父组件发射一个事件并携带参数
 				this.$emit('change',e.target.innerText)
 				// console.log(e.target.innerText)
 			},
 			handletouchstart(){
 				this.touchStatus = true
+
 			},
 			handletouchmove(e){
 				if (this.touchStatus) {
-					const starty1 = this.$refs['A'][0].offsetTop
-					const starty2 = this.$refs['B'][0].offsetTop
+
+					//函数截流？？
+					if (this.timer) {
+						clearTimeout(this.timer)
+					}
+
+					this.timer  = setTimeout(()=>{
+						const starty1 = this.startY
+						const starty2 = this.$refs['B'][0].offsetTop
 
 					// 每个字母的高度
 					const height = starty2 - starty1
@@ -58,7 +70,9 @@
 					let index = Math.floor((starty - starty1)/height)
 
 					this.$emit('change',this.letters[index])
-
+				},16)
+					
+					
 
 				}
 			},
@@ -66,6 +80,11 @@
 				this.touchStatus = false
 
 			}
+		},
+
+//当页面数据更新时触发
+		updated(){
+			this.startY = this.$refs['A'][0].offsetTop
 		}
 	}
 </script>

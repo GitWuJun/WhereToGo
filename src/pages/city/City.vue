@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<city-header></city-header>
-		<city-search></city-search>
+		<city-search :cities="cities"></city-search>
 		<city-list 
 		:hotCities="hotCities" 
 		:cities="cities"
@@ -40,7 +40,7 @@ export default{
 	},
 	methods:{
 		getCityData(){
-			axios.get('/api/city.json')
+			axios.get('/static/mock/city.json')
 			.then(this.getCityDataSucc)
 		},
 		getCityDataSucc(res){

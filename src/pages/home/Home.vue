@@ -15,6 +15,7 @@
 	import axios from 'axios'
 
 
+    //引用得都是局部组件
 	import HomeHeader from './components/Header'
 	import HomeSwiper from './components/Swiper'
 	import HomeIcons from './components/Icons2'
@@ -40,7 +41,7 @@
 		},
 		methods:{
 			getHomeInfo(){
-				axios.get('/api/index.json')
+				axios.get('/static/mock/index.json')
 				.then(this.getHomeInfoSucc)
 			},
 			getHomeInfoSucc(res){

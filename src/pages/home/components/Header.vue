@@ -10,7 +10,7 @@
       </div>
       <router-link to="/city">
         <div class="header-right">
-          {{this.$store.state.city}}
+          {{this.currentCity}}
           <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
       </router-link>
@@ -20,36 +20,50 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name:"HomeHeader",
+    computed:{
+
+      //将vuex中的数据映射到计算属性中，组件中可以直接使用计算属性了
+      // ...mapState(['city'])
+      ...mapState({
+        currentCity:'city'
+      })
+    },
   }
 </script>
 
 <!--<style lang="stylus" scoped>-->
 
-<!--.header-->
-<!--display: flex-->
-<!--height: .86rem;-->
-<!--background: red;-->
+  <!--.header-->
+  <!--display: flex-->
+  <!--height: .86rem;-->
+  <!--background: red;-->
 
-<!--.header-left-->
-<!--width: .64rem-->
+  <!--.header-left-->
+  <!--width: .64rem-->
 
-<!--float: left-->
+  <!--float: left-->
 
-<!--.header-input-->
-<!--flex: 1-->
+  <!--.header-input-->
+  <!--flex: 1-->
 
-<!--.header-right-->
-<!--width : 1.24-->
+  <!--.header-right-->
+  <!--width : 1.24-->
 
 
-<!--</style>-->
+  <!--</style>-->
 
-<style  scoped>
+<!-- 1rem = html font-size = 5-px -->
+  <style lang="stylus" scoped>
+  @import '~styles/varibles'
+  // @import '../../../assets/styles/varibles'
+
+
 
   .header {
-    background-color: #00bcd4;
+    background-color: $bgColor;
     display: flex;
     line-height: .86rem;
     color: #fff;
@@ -82,7 +96,8 @@
   }
 
   .header-right {
-    width: 1.24rem;
+    min-width: 1.04rem;
+    padding:0 .1rem
     float: right;
     text-align: center;
 
