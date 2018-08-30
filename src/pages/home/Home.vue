@@ -57,6 +57,7 @@
 					this.iconList = data.iconList
 					this.recommendList = data.recommendList
 					this.weekendList = data.weekendList
+
 				}
 
 				// console.log('====',this.swiperList)
@@ -66,7 +67,7 @@
 			this.getHomeInfo()
 			this.lastCity = this.city
 		},
-		//当页面重新被显示时会被执行---使用keepalive前提
+		//当页面重新被显示时会被执行---前提是使用keepalive
 		activated(){
 			if (this.lastCity !== this.city) {
 				this.lastCity = this.city

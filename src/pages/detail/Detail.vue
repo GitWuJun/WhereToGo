@@ -1,16 +1,20 @@
 
 <template>
 	<div>
-		详情
+		<detail-banner></detail-banner>
 	</div>
 </template>
 
 <script>
+	import DetailBanner from './components/Banner'
 
 	export default{
+		components:{
+			DetailBanner
+		},
 
 		mounted(){
-		console.log(this.$route.params.item.desc)
+		// console.log(this.$route.params.item.desc)
 	}
 		
 	}
