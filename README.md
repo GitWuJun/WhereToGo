@@ -2,7 +2,7 @@
 
 只有三个页面，效果如下:
 
-![image](https://github.com/GitWuJun/WhereToGo/blob/master/ezgif.com-video-to-gif.gif)
+![image](https://github.com/GitWuJun/WhereToGo/blob/master/Screenrecorder-2018-08-31-16-45-22-957.gif)
 
 
 ## Build Setup
