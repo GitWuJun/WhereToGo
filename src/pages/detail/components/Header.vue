@@ -52,8 +52,16 @@
 		computed:{
 
 		},
+
+		//页面被展示时执行(keep-alive组件激活时调用)
 		activated(){
+			//对window全局事件的绑定，对其他界面也会影响
 			window.addEventListener('scroll',this.handleScroll)
+		},
+		//页面将被隐藏时执行(keep-alive组件停用时调用)
+		deactivated(){
+			//将windows绑定的事件进行解绑
+			window.removeEventListener('scroll',this.handleScroll)
 		}
 	}
 </script>
