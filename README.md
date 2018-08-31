@@ -1,8 +1,10 @@
 # wheretogo
 
-> A Vue.js project
+使用VUE仿去哪儿
 
-使用VUE仿去哪儿，只有三个页面，效果如下:
+只有三个页面，效果如下:
+
+![image](https://github.com/GitWuJun/WhereToGo/blob/master/ezgif.com-video-to-gif.gif)
 
 
 ## Build Setup
