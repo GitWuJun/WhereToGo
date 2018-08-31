@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+使用VUE仿去哪儿，只有三个页面，效果如下:
+
+
 ## Build Setup
 
 ``` bash
