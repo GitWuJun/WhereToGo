@@ -30,7 +30,7 @@
 			return{
 				sightName:'',
 				bannerImg:'',
-				bannerImgs:'',
+				bannerImgs:[],
 				list:[{
 					title:'成人票',
 					children:[{

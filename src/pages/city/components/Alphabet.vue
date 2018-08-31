@@ -5,7 +5,7 @@
 		v-for="item of letters"
 		:key="item"
 		@click="handleLetterClick"
-		@touchstart="handletouchstart"
+		@touchstart.prevent="handleTouchStart"
 		@touchmove="handletouchmove"
 		@touchend="handletouchend"
 		:ref="item"
@@ -46,7 +46,7 @@
 				this.$emit('change',e.target.innerText)
 				// console.log(e.target.innerText)
 			},
-			handletouchstart(){
+			handleTouchStart(){
 				this.touchStatus = true
 
 			},

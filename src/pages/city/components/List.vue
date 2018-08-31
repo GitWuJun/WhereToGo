@@ -52,6 +52,8 @@ export default{
 			
 			// this.$store.dispatch('changeCity',city)
 
+			// alert(city)
+
 			this.$store.commit('changeCity',city)
 
 			this.$router.push('/')
@@ -71,7 +73,9 @@ export default{
 			}
 		},
 		mounted(){
-			this.scroll = new Bscroll(this.$refs.wrapper)
+			this.scroll = new Bscroll(this.$refs.wrapper,{
+				click:true
+			})
 
 		},
 	}
