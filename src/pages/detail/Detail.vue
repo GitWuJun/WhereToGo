@@ -1,7 +1,11 @@
 
 <template>
 	<div>
-		<detail-banner></detail-banner>
+		<detail-banner
+		:sightName = "sightName"
+		:bannerImg = "bannerImg"
+		:bannerImgs = "bannerImgs"
+		></detail-banner>
 		<detail-header></detail-header>
 		<div class="content">
 			<detail-list :list="list"></detail-list>
@@ -13,8 +17,10 @@
 	import DetailBanner from './components/Banner'
 	import DetailHeader from './components/Header'
 	import DetailList from './components/List'
+	import axios from 'axios'
 
 	export default{
+		name:'Detail',
 		components:{
 			DetailBanner,
 			DetailHeader,
@@ -22,6 +28,9 @@
 		},
 		data(){
 			return{
+				sightName:'',
+				bannerImg:'',
+				bannerImgs:'',
 				list:[{
 					title:'成人票',
 					children:[{
@@ -46,9 +55,35 @@
 
 		mounted(){
 		// console.log(this.$route.params.item.desc)
-	}
+		this.getDetailInfo()
+	},
+	methods:{
+		getDetailInfo(){
+			// console.log(this.$route.params.item.id)
+			// axios.get('api/detail.json')
+			//进行axios请求
+			axios.get('/static/mock/detail.json',{
+				params:{
+					id:this.$route.params.item.id
+				}
+			}).then(this.handleGetDataSucc)
+
+		},
+		handleGetDataSucc(res){
+			// console.log(res)
+			res = res.data
+			if (res.ret && res.data) {
+				const data = res.data
+				this.sightName = data.sightName
+				this.bannerImg = data.bannerImg
+				this.bannerImgs = data.gallaryImgs
+				this.list = data.categoryList
+			}
+
+		}
 		
 	}
+}
 </script>
 
 <style lang="stylus" scoped>

@@ -22,5 +22,10 @@ export default new Router({
 		name:'Detail',
 		component:Detail
 	}
-	]
+	],
+
+	//修复一个bug--让路由切换时，页面始终回到最顶部
+	scrollBehavior: function (to, from, savedPosition) {
+		return savedPosition || { x: 0, y: 0 }
+	}
 })

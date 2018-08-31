@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="banner" @click="handleBannerClick">
-			<img class="banner-img" src="//img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg"/>
+			<img class="banner-img" :src="bannerImg"/>
 			<div class="banner-info">
 				<div class="banner-title">
 					故宫XXXXX
@@ -15,7 +15,7 @@
 		</div>
 		<common-gallary
 		v-show="showGallary"
-		:imgs="imgs"
+		:imgs="bannerImgs"
 		@close="handleGallaryClose">
 			
 		</common-gallary>
@@ -26,12 +26,17 @@
 	import CommonGallary from 'common/gallary/Gallary'
 	export default {
 		name:'DetailBanner',
+		props:{
+			sightName:String,
+			bannerImg:String,
+			bannerImgs:Array
+		},
 		data(){
 			return{
 				showGallary:false,
-				imgs:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=3181d28709fb3fc41f1ff0c7dc720234&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0157ba55457ea80000019ae99c9974.jpg%401280w_1l_2o_100sh.jpg',
-				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=ad77fa02e4220921660eecb23acd92af&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014dbb5a204c17a80120ba387e45a5.jpg%401280w_1l_2o_100sh.jpg',
-				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=3186ebde5eea4e0508d25c63df0f5dc0&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fcc11728b4710b912fcc749f6c9fdfc03924522b7.jpg']
+				// imgs:['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=3181d28709fb3fc41f1ff0c7dc720234&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0157ba55457ea80000019ae99c9974.jpg%401280w_1l_2o_100sh.jpg',
+				// 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=ad77fa02e4220921660eecb23acd92af&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014dbb5a204c17a80120ba387e45a5.jpg%401280w_1l_2o_100sh.jpg',
+				// 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535629888077&di=3186ebde5eea4e0508d25c63df0f5dc0&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fcc11728b4710b912fcc749f6c9fdfc03924522b7.jpg']
 			}
 		},
 		components:{
